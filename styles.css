@@ -26,6 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    --element-gap: 1.5rem;
 }
 
 h1, h2, p {
@@ -36,7 +37,7 @@ h1, h2, p {
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--element-gap);
     margin: 4rem auto;
 }
 
@@ -45,26 +46,26 @@ h1, h2, p {
     border-radius: 10px;
 }
 
-.testimonial:nth-child(1) {
+.left-col .upper-row .testimonial:nth-of-type(1) {
     background-color: var(--moderate-violet);
     background-image: url(./images/bg-pattern-quotation.svg);
     background-repeat: no-repeat;
     background-position: top right 30px;
 }
 
-.testimonial:nth-child(2) {
+.left-col .upper-row .testimonial:nth-of-type(2) {
     background-color: var(--very-dark-grayish-blue);
     color: var(--white);
 }
 
-.testimonial:nth-child(5),
-.testimonial:nth-child(3) {
+.left-col .bottom-row .testimonial:first-child,
+#testimonials > .testimonial {
     background-color: var(--white);
     color: var(--very-dark-grayish-blue);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-.testimonial:nth-child(4) {
+.left-col .bottom-row .testimonial:last-child {
     background-color: var(--very-dark-blackish-blue);
     color: var(--white);
 }
@@ -110,4 +111,41 @@ h1, h2, p {
     line-height: 1.2rem;
     font-weight: 400;
     opacity: .7;
+}
+
+#testimonials .left-col,
+#testimonials .bottom-row,
+#testimonials .upper-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-gap);
+}
+
+
+/* -------------------------- Desktop layout ---------------------------*/
+
+@media screen and (min-width: 768px) {
+    #testimonials {
+        max-width: 1280px;
+        display: grid;
+        grid-template-columns: 4fr 1.5fr;
+    }
+
+    #testimonials .left-col {
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: var(--element-gap);
+    }
+
+    #testimonials .left-col .upper-row{
+        display: grid;
+        grid-template-columns: 3fr 1.5fr;
+        gap: var(--element-gap);
+    }
+
+    #testimonials .left-col .bottom-row{
+        display: grid;
+        grid-template-columns: 1.5fr 3fr;
+        gap: var(--element-gap);
+    }
 }
